@@ -1,17 +1,16 @@
-
-
-// ===== PINS ============
+/*
+PBD PROJECT MAIN
+=========================
+*/
 
 
 void setup() {
   Serial.begin(9600);
   setupSeven();
+  sevenDemo();
 }
 
 void loop() {
-  int i = 0;
-  for (i=0; i<100; i++) {
-    showNum(i);
-    delay(50);
-  }
+  showNum(getTemp());
+  delay(50);
 }

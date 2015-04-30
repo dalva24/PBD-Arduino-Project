@@ -40,30 +40,34 @@ void initSeven() {
 }
 
 void showNum(int num) {
+  initSeven();
   if (num >= 0 && num <= 9) {
-    initSeven();
-    int i = 0;
-    for (i=0; i<8; i++) {
+    for (int i=0; i<8; i++) {
       digitalWrite(pin_sr1, number[0] & (B00000001<<i));
       digitalWrite(pin_sr2, number[String(num)[0]-'0'] & (B00000001<<i));
       clockSeven();
-      // delay(500);
     }
-    delay(50);
   } else if (num >= 10 && num <= 99) {
-    initSeven();
-    int i = 0;
-    for (i=0; i<8; i++) {
+    for (int i=0; i<8; i++) {
       digitalWrite(pin_sr1, number[String(num)[0]-'0'] & (B00000001<<i));
       digitalWrite(pin_sr2, number[String(num)[1]-'0'] & (B00000001<<i));
       clockSeven();
-      // delay(500);
     }
-    delay(50);
   }
+  delay(50);
 }
 
 void clockSeven() {
   digitalWrite(pin_clock, LOW);
   digitalWrite(pin_clock, HIGH);
+}
+
+void sevenDemo() {
+  int i;
+  for (i=0; i<100; i++) {
+    showNum(i);
+    delay(10);
+  }
+  showNum(00);
+  delay(1000);
 }
