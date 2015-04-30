@@ -1,0 +1,5 @@
+https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors?view=all
+https://learn.adafruit.com/adafruit-arduino-lesson-10-making-sounds/playing-a-scale
+https://learn.adafruit.com/tmp36-temperature-sensor/using-a-temp-sensor
+https://learn.adafruit.com/photocells/using-a-photocell
+https://learn.adafruit.com/adafruit-data-logger-shield/light-and-temperature-logger-use-it
