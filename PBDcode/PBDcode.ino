@@ -9,14 +9,18 @@ before running program to ensure
 correct pin configurations.
 */
 
-
+int i = 0;
 void setup() {
   Serial.begin(9600);
   setupSeven();
-  sevenDemo();
+  //sevenDemo();
+  initbutton();
 }
 
 void loop() {
   showNum(getTemp());
-  delay(50);
+  loopbutton();
+  Serial.print(getTemp()); Serial.println(" degrees C");
+  Serial.print(getLight()); Serial.println(" L");
+  delay(500);
 }

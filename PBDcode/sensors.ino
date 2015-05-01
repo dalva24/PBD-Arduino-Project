@@ -6,16 +6,17 @@ TODO:
   means 5/1024 precision = 4.88mV
   3.3V allows higher precision -> 3.3/1024 = 3.22mV
 - create light sensor
-
+analogRead(pin_temp)*4.88/10;
 NOTE:
 temp sensor outputs 10mV/*C
 */
 
-#define pin_temp 0
-#define pin_light 1
+#define pin_temp 1
+#define pin_light 0
 
 int getTemp() {
- return analogRead(pin_temp)*4.88/10; 
+  int temperatureC = analogRead(pin_temp)*4.88/10; 
+   return temperatureC; 
 }
 
 int getLight() {
