@@ -1,23 +1,38 @@
-#define pin_button 12
+/*
+BUSH BUTTON INTERRUPT
+=========================
+
+*/
+
+#define pin_button 2
 #define pin_LED 6
 
-int val = 0;     // variable for reading the pin status
-bool nyala = false;
+bool buttState = false;
+bool latch = true;
 
-void initbutton() {
-  pinMode(pin_LED, OUTPUT);  // declare LED as output
-  pinMode(pin_button, INPUT);    // declare pushbutton as input
+void buttonInterrupt(){
+  if (digitalRead (2) == HIGH)
+    buttState = !buttState;
 }
 
-void loopbutton(){
-  val = digitalRead(pin_button);  // read input value
-  Serial.print(val + nyala);Serial.println("===========");
-  if (val == HIGH){
-      if (!nyala){
-        digitalWrite(pin_LED, LOW);
-        nyala = true;}
-      else{
-        digitalWrite(pin_LED, HIGH);
-        nyala = false;}
+bool buttGet() {
+  return buttState;
+}
+
+bool latchOn() {
+  if (buttState && latch) {
+    latch = false;
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool latchOff() {
+  if (!buttState && !latch) {
+    latch = true;
+    return true;
+  } else {
+    return false;
   }
 }

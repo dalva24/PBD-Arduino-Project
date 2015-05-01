@@ -9,7 +9,7 @@ efg
 
 #define pin_sr1 8
 #define pin_sr2 9
-#define pin_clock 2
+#define pin_clock 7
 #define pin_reset 4
 
 byte number[] = {
@@ -33,6 +33,8 @@ void setupSeven() {
 }
 
 void initSeven() {
+  digitalWrite(pin_sr1, LOW);
+  digitalWrite(pin_sr2, LOW);
   digitalWrite(pin_reset, LOW);
   clockSeven();
   digitalWrite(pin_reset, HIGH);
@@ -56,7 +58,7 @@ void showNum(int num) {
       clockSeven();
     }
   }
-  delay(50);
+  delay(10);
 }
 
 void clockSeven() {
@@ -68,8 +70,12 @@ void sevenDemo() {
   int i;
   for (i=0; i<100; i++) {
     showNum(i);
-    delay(10);
+    delay(5);
   }
-  showNum(00);
-  delay(1000);
+  for (int i=0; i<=3; i++) {
+    showNum(88);
+    delay(100);
+    initSeven();
+    delay(100+(50*i));
+  }
 }
