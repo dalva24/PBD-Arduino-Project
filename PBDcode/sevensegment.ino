@@ -9,7 +9,7 @@ efg
 
 #define pin_sr1 8
 #define pin_sr2 9
-#define pin_clock 2
+#define pin_clock 7
 #define pin_reset 4
 
 byte number[] = {
@@ -42,15 +42,17 @@ void initSeven() {
 void showNum(int num) {
   initSeven();
   if (num >= 0 && num <= 9) {
+    int digit[] = {0, String(num)[0]-'0'};
     for (int i=0; i<8; i++) {
-      digitalWrite(pin_sr1, number[0] & (B00000001<<i));
-      digitalWrite(pin_sr2, number[String(num)[0]-'0'] & (B00000001<<i));
+      digitalWrite(pin_sr1, number[digit[0]] & (B00000001<<i));
+      digitalWrite(pin_sr2, number[digit[1]] & (B00000001<<i));
       clockSeven();
     }
   } else if (num >= 10 && num <= 99) {
+    int digit[] = {String(num)[0]-'0', String(num)[0]-'0'};
     for (int i=0; i<8; i++) {
-      digitalWrite(pin_sr1, number[String(num)[0]-'0'] & (B00000001<<i));
-      digitalWrite(pin_sr2, number[String(num)[1]-'0'] & (B00000001<<i));
+      digitalWrite(pin_sr1, number[digit[0]] & (B00000001<<i));
+      digitalWrite(pin_sr2, number[digit[1]] & (B00000001<<i));
       clockSeven();
     }
   }

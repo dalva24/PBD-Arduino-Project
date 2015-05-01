@@ -1,6 +1,12 @@
 /*
 PBD PROJECT MAIN
-=========================
+================================
+        !! WARNING !!
+      !!   WARNING   !!
+    !!     WARNING     !!
+Always check Fritzing Schematic
+before running program to ensure
+correct pin configurations.
 */
 
 
