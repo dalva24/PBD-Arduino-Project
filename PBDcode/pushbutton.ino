@@ -1,7 +1,8 @@
 /*
 BUSH BUTTON INTERRUPT
 =========================
-
+TODO:
+- [cancelled] fix latch
 */
 
 #define pin_button 2
@@ -9,10 +10,13 @@ BUSH BUTTON INTERRUPT
 
 bool buttState = false;
 bool latch = true;
+unsigned long lastPressed;
 
 void buttonInterrupt(){
-  if (digitalRead (2) == HIGH)
+  if (digitalRead (2) == HIGH && millis() >= lastPressed + 200) {
     buttState = !buttState;
+    lastPressed = millis();
+  }
 }
 
 bool buttGet() {

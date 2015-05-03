@@ -78,4 +78,5 @@ void sevenDemo() {
     initSeven();
     delay(100+(50*i));
   }
+  showNum(88);
 }
