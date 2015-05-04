@@ -61,6 +61,15 @@ void showNum(int num) {
   delay(10);
 }
 
+void showLH() {
+  initSeven();
+  for (int i=0; i<8; i++) {
+    digitalWrite(pin_sr1, B11100010 & (B00000001<<i));
+    digitalWrite(pin_sr2, B10101011 & (B00000001<<i));
+    clockSeven();
+  }
+}
+
 void clockSeven() {
   digitalWrite(pin_clock, LOW);
   digitalWrite(pin_clock, HIGH);

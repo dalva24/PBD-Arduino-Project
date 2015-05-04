@@ -17,7 +17,6 @@ TODO:
 */
   
 int time;
-int frq;
 String commandBuff = "";         // a string to hold incoming data
 boolean commandDone = false;  // whether the string is complete
 int tempT1 = 40;
@@ -97,6 +96,11 @@ void loop() {
       Serial.println("  t1 {num} - set temp threshold 1 (pre-overheat alarm) to {num}");
       Serial.println("  t2 {num} - set temp threshold 2 (overheat alarm) to {num}");
       Serial.println("  l {num} - set light level on which alarm system will be active");
+      Serial.println("  s");
+    } else if (commandBuff[0] == 's') {
+      Serial.println("Shinsekai - Log Horizon - transcribed for Arduino PWM by Dalva24");
+      showLH();
+      shinsekai();
     } else {
       Serial.println("ERR01: Unknown command received. ");
     }
